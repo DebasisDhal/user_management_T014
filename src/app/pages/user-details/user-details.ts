@@ -17,19 +17,20 @@ adminDetails = signal<any[]>([]);
     }
   
     ngOnInit(): void {
-      this.route.paramMap.subscribe(params =>{
-        this.userId = params.get('id');
-      })
-      this.adminData();
-console.log(this.adminDetails)
+     this.route.queryParamMap.subscribe(params => {
+    const id = Number(params.get('id'));
+
+    if (id) {
+      this.adminData(id);
+    }
+  });
+     
     }
   
   
-    async adminData(){
+    async adminData(userId:number){
      this.master.getData().subscribe((res:any)=>{
-        this.adminDetails.set( res.filter((x:any)=> x.id== this.userId));
-        // console.log(this.adminDetails)
-
+        this.adminDetails.set( res.filter((x:any)=> x.id== userId));
       })
     }
 

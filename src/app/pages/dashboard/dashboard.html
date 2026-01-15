@@ -68,7 +68,7 @@
               <h4>{{data.name}}</h4>
               <p>{{data.id}}</p>
               <p>{{data.phone}}</p>
-              <button [routerLink]="['users', data.id]">View Profile</button>
+              <button [routerLink]="['/users']" [queryParams]="{id: data.id}">View Profile</button>
             </div>
         }
         </div>
