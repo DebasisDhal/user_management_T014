@@ -1,0 +1,82 @@
+
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo" [routerLink]="''">YOCO<br><span>Status</span></h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Reports</a>
+      <a>Users</a>
+      <a>Emergency</a>
+      <a>Attendance</a>
+      <a>Fees</a>
+      <a>Inventory</a>
+      <a>Visitors</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="header">
+      <h3>GHRC Boys Hostel</h3>
+      <input type="search" placeholder="Search Hostel" />
+      <div class="profile">👤 Vaibhav</div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat-card">
+        <h4>Hostel Admins</h4>
+        <p>05</p>
+      </div>
+      <div class="stat-card">
+        <h4>Hostel Staff</h4>
+        <p>10</p>
+      </div>
+      <div class="stat-card">
+        <h4>Students</h4>
+        <p>200</p>
+      </div>
+    </section>
+
+    <!-- Users -->
+          <header class="top-header">
+    <div>
+      <h2>User Management</h2>
+      <p>Hi, Welcome to User Management</p>
+    </div>
+    <button class="btn-primary" routerLink="users/create">Add Users</button>
+  </header>
+    <section class="users">
+  
+        <router-outlet
+    (activate)="onChildActivate()"
+    (deactivate)="onChildDeactivate()">
+  </router-outlet>
+   
+  @if(!childRouteActive){
+
+      <div class="user-grid">
+        @for(data of adminDetails; track data){
+
+            <div class="user-card">
+              <img src="https://i.pravatar.cc/10" />
+              <h4>{{data.name}}</h4>
+              <p>{{data.id}}</p>
+              <p>{{data.phone}}</p>
+              <button [routerLink]="['users', data.id]">View Profile</button>
+            </div>
+        }
+        </div>
+  }
+    </section>
+
+  </main>
+
+</div>
+
+

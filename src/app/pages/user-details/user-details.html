@@ -1,0 +1,64 @@
+<div class="container">
+
+  <h2 class="title">Admin Details</h2>
+
+  <div class="card">
+@for(data of adminDetails(); track data.id){
+
+  <!-- Profile Header -->
+  <div class="profile">
+    <div class="profile-left">
+      <img src="https://i.pravatar.cc/150?img=12" alt="avatar">
+      <div>
+        <h3>{{data.name}}</h3>
+        <p class="id">{{data.id}}</p>
+      </div>
+    </div>
+
+    <div class="profile-right">
+      <span>Off / On</span>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Info Rows -->
+  <div class="info">
+    <div class="row">
+      <span>📞 Phone No</span>
+      <strong>+91 {{data.phone}}</strong>
+    </div>
+
+    <div class="row">
+      <span>✉️ Email ID</span>
+      <strong>{{data.email}}</strong>
+    </div>
+
+    <div class="row">
+      <span>🏠 Number of Hostel Assigned</span>
+      <strong>06</strong>
+    </div>
+
+    <div class="row">
+      <span>🏢 Names of Hostels Assigned</span>
+      <strong>Shaddha Park | Saikheda | GHRU</strong>
+    </div>
+
+    <div class="row">
+      <span>📍 Permanent Address</span>
+<strong>
+  {{ data.address.street }}, {{ data.address.suite }}, {{ data.address.city }}
+</strong>
+    </div>
+  </div>
+}
+
+  </div>
+
+  <h3 class="kyc">Upload KYC Documents</h3>
+
+</div>
+
+
