@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Master } from '../services/master';
 import { RouterOutlet, RouterLinkWithHref, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet,RouterModule],
+  imports: [RouterOutlet,RouterModule,FormsModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
 export class Dashboard implements OnInit {
 
   adminDetails:any;
+  searchText: string = '';
+
   constructor(private master:Master){
 
   }
@@ -38,4 +41,13 @@ onChildDeactivate() {
 }
 
 
+filteredAdmins() {
+  if (!this.searchText) {
+    return this.adminDetails; // show all
+  }
+
+  return this.adminDetails.filter((admin:any) =>
+    admin.name.toLowerCase().includes(this.searchText.toLowerCase())
+  );
+}
 }

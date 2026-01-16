@@ -23,7 +23,8 @@
     <!-- Header -->
     <header class="header">
       <h3>GHRC Boys Hostel</h3>
-      <input type="search" placeholder="Search Hostel" />
+      <input type="search" placeholder="Search by name"
+  [(ngModel)]="searchText" />
       <div class="profile">👤 Vaibhav</div>
     </header>
 
@@ -61,7 +62,7 @@
   @if(!childRouteActive){
 
       <div class="user-grid">
-        @for(data of adminDetails; track data){
+        @for(data of filteredAdmins(); track data){
 
             <div class="user-card">
               <img src="https://i.pravatar.cc/10" />
